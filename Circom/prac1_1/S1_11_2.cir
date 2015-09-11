@@ -1,0 +1,23 @@
+S 2 13
+.lib cmos6tm.mod
+
+.param ancho=150u
+.param largo=0.35u
+
+M1 out G vss vss modn w={ancho} l={largo}
+Rl vdd out 1k
+VSS vss 0 0 DC 0
+
+VDD vdd vss  5 DC 5
+VIN Vin1 vss  1 DC 1
+Rbias vdd G2 1.2966k
+
+Mbias G2 G2 vss vss modn w={ancho} l={largo}
+Rac g2 G 1k
+Cin Vin1 G 1m 
+
+.dc VIN 0 5 0.005
+.op
+.probe
+
+.end

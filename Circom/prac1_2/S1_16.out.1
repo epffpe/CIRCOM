@@ -1,0 +1,42 @@
+
+**** 10/09/07 18:42:18 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 2 16
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+.lib cmos6tm.mod
+
+.param ancho=150u
+.param largo=0.35u
+
+.param ampl=0.5
+.param amp2=0.25
+.param f1=1M
+.param f2=1.8M
+.param fas1=0
+.param fas2=90
+M1 vdd G out vss modn w={ancho} l={largo}
+Rl vdd out 1k
+
+
+
+Ibias out vss 1m DC 1m
+VSS vss 0 0 DC 0
+VDD vdd vss  5 DC 5
+Vbias pol vss  2.5 DC 2.5
+vgsignal1 pol in2 sin(0 {amp1} {f1} 0 0 {fas1})
+vgsignal2 in2 G sin(0 {amp2} {f2} 0 0 {fas2})
+.op
+.tran 0 5m 0.01m
+.probe
+
+.end
+
+
+ERROR -- Undefined parameter: amp1

@@ -1,0 +1,32 @@
+
+**** 10/02/07 18:07:24 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 1 2
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+.lib cmos6tm.mod
+
+.STEP lin param ancho 50u 200u 20u
+.param largo=0.35u
+
+M1 vdd G vss vss modn w={ancho} l={largo}
+
+VSS vss 0 0 DC 0
+
+VDD vdd vss  5 DC 5
+Vbias G vss  1 DC 1
+
+.dc Vbias 0 5 0.5
+
+.probe
+
+.end
+
+
+ERROR -- Undefined parameter: ancho

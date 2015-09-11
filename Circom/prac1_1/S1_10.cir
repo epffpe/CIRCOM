@@ -1,0 +1,19 @@
+S 1 2
+.lib cmos6tm.mod
+
+.param ancho=2.058u
+.param largo=0.35u
+.STEP lin param ancho 70.4u 70.5u 0.01u
+
+M1 vdd G vss vss modn w={ancho} l={largo}
+
+VSS vss 0 0 DC 0
+
+VDD vdd vss  5 DC 5
+Vbias G vss  1 DC 1
+
+.dc Vbias 0 5 0.005
+
+.probe
+
+.end

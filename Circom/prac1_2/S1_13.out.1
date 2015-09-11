@@ -1,0 +1,35 @@
+
+**** 10/02/07 19:21:33 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 2 13
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+.lib cmos6tm.mod
+-----$
+ERROR -- Can't find library
+
+.param ancho=150u
+.param largo=0.35u
+
+.param ampl=4
+.param freq=1k
+M1 vdd G vss vss modn w={ancho} l={largo}
+
+VSS vss 0 0 DC 0
+
+VDD vdd vss  5 DC 5
+Vbias pol vss  1.08 DC 3
+Vin pol G sin(0 {ampl} {freq}) AC 0.05
+.op
+.ac dec 100 10 1000G
+
+.probe
+
+.end
+

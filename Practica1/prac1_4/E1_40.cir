@@ -1,0 +1,23 @@
+E 1_40
+.lib cmos6tm.mod
+
+.param ancho=150u
+.param largo=0.35u
+
+
+M1 out G 0 0 modn w={ancho} l={largo}
+Cserie vcc d2 470u
+Ls d2 out 1nH
+Vcc vcc 0 5V
+Rd vcc out 1k
+Cd vcc out 7.818p
+Vbias G2 0 DC 1.08V
+Vin G G2 DC 0 AC 10m sin(0 10e-3 1.8G)
+
+
+.op
+.options reltol=0.1u
+.ac DEC 1000 1G 2.5G
+.tran 10p 50000p
+.probe
+.end

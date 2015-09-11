@@ -1,0 +1,22 @@
+S 2 14
+.lib cmos6tm.mod
+
+.param ancho=150u
+.param largo=0.35u
+
+.param ampl=4
+.param freq=1k
+M1 out G vss vss modn w={ancho} l={largo}
+.param Res=1k
+Rl vdd out {Res}
+Rg G1 G 2k
+.STEP lin param Res 0.5k 5k 0.2k
+VSS vss 0 0 DC 0
+VDD vdd vss  5 DC 5
+Vbias pol vss  1.08 DC 1.08
+Vin pol G1 sin(0 {ampl} {freq}) 
+.op
+.tran 0 5m 0.01m
+.probe
+
+.end

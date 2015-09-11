@@ -1,0 +1,21 @@
+S 1-24
+.lib cmos6tm.mod
+.param ancho=150u
+.param largo=0.35u
+M1 out G vss vss modn w={ancho} l={largo} ; transistor
+VSS vss 0 0 DC 0
+VDD vdd vss  5 DC 5
+
+Rl vdd out 1k
+Cl out vss 1p 
+Rg g1 G 2k
+Vin g1 G2 DC 0 AC 100m SIN(0 1 1meg)
+Vbias g2 vss 1.08V
+
+.op
+.options reltol=0.1u
+.ac DEC 10 100k 1G
+.probe
+
+.end
+

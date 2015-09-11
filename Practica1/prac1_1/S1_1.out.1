@@ -1,0 +1,30 @@
+
+**** 09/25/07 18:26:12 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+  
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+.param ancho=10u
+.param largo=10u
+
+M1 vdd G vss vss modn w={ancho} l={largo}
+
+VSS vss 0 0 DC 0
+
+VDD vdd vss  5 DC 5
+Vbias G vss  1 DC 1
+
+.dc VDD 0 5 0.1 Vbias 0 5 0.5
+
+.probe
+
+.end
+
+ERROR -- Model modn used by M1 is undefined

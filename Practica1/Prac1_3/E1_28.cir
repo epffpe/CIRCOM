@@ -1,0 +1,23 @@
+S 1-28
+.lib cmos6tm.mod
+.param ancho=150u
+.param largo=0.35u
+M1 dren G vss vss modn w={ancho} l={largo} ; transistor principal
+Mcasc out2 Gcasc dren vss modn w={ancho} l={largo} ; transistor cascodo
+M0 out1 Gb vss vss modn w={ancho} l={largo} ; transistor independiente
+VSS vss 0 0 DC 0
+VDD vdd vss  5 DC 5
+
+Vbias0 Gb vss 1.08
+Vbias G vss 1.08V
+Vcac Gcasc vss 2.3
+Vout out1 vss DC 5 AC 1
+Eout out2 vss out1 vss 1
+
+.op
+.options reltol=0.1u
+.ac DEC 20 100k 1G
+.probe
+
+.end
+

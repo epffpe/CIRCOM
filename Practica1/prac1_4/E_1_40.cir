@@ -1,0 +1,18 @@
+E 1_40
+.lib cmos6tm.mod
+.param ancho=150u
+.param largo=0.35u
+M1		D	G	0	0	modn	 w={ancho} 	l={largo} ; transistor principal
+
+Rl		vcc	D	1k
+Cl		vcc	D	7.78p
+Ll		vcc	D	1nH
+Vcc	vcc	0	5V
+Vbias	g1		0	1.08V
+Vin	G		g1	DC 0	AC 100m	SIN(0 100m 1.8G)
+
+.op
+.tran 1n 1000n
+.AC DEC 5000 1Meg 10G
+.probe
+.end

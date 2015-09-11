@@ -1,0 +1,27 @@
+E 1_36
+.lib cmos6tm.mod
+
+.param ancho=450u
+.param largo=0.35u
+
+
+M1 out G 0 0 modn w={ancho} l={largo}
+
+.param m 1.41
+.STEP param m LIST 1.41 2 2.41 3.1 1e6
+
+Ls vcc d2 {(100/(2*3.14159 * 1.16e9)) / {m}}
+
+Vcc vcc 0 5V
+Rd d2 out 100
+Cl out 0 1p
+Vbias G2 0 DC 1.5V
+Vin G1 G2 DC 0 AC 10m pulse(0 100e-3 0 1e-15 3e-9 6e-9)
+Rg G1 G 50
+
+.op
+.options reltol=0.1u
+.ac DEC 100 10Meg 10G
+.tran 0.01n 10n
+.probe
+.end

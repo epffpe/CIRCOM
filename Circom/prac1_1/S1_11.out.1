@@ -1,0 +1,223 @@
+
+**** 10/02/07 19:07:16 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 1 11
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+.lib cmos6tm.mod
+
+.param ancho=150u
+.param largo=0.35u
+
+M1 out G vss vss modn w={ancho} l={largo}
+Rl vdd out 1k
+VSS vss 0 0 DC 0
+
+VDD vdd vss  5 DC 5
+VIN Vin1 vss  1 DC 1
+Ibias vdd G2 3m DC 3m
+
+Mbias G2 G2 vss vss modn w={ancho} l={largo}
+Rac g2 G 1k
+Cin Vin1 G 1m 
+
+.dc VIN 0 5 0.005
+.op
+.probe
+
+.end
+
+**** 10/02/07 19:07:16 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 1 11
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               modn            
+               NMOS            
+       LEVEL    6            
+           L  100.000000E-06 
+           W  100.000000E-06 
+         VTO     .8306       
+          KP  130.718400E-06 
+       GAMMA    0            
+      LAMBDA    0            
+         RSH   25            
+          IS    1.000000E-15 
+          JS   10.000000E-06 
+          PB     .86         
+        PBSW     .86         
+          CJ  290.000000E-06 
+        CJSW  230.000000E-12 
+          MJ     .46         
+        CGSO  350.000000E-12 
+        CGDO  350.000000E-12 
+        CGBO  150.000000E-12 
+        NSUB   44.110000E+15 
+         TOX   15.850000E-09 
+          XJ  400.000000E-09 
+       UCRIT   10.000000E+03 
+         ETA     .3          
+          KF   23.300000E-27 
+          AF    1.451        
+      DIOMOD    1            
+         VFB   -1            
+        LETA    0            
+        WETA    0            
+          U0     .04326      
+       XPART    1            
+        VTH0     .8306       
+          K3    6.483        
+          W0  141.000000E-09 
+         NLX  100.000000E-12 
+        DVT0    2.288        
+        DVT1     .6563       
+          UA    1.000000E-12 
+          UB  772.100000E-21 
+          UC    2.029000E-03 
+        VSAT   95.740000E+03 
+        RDSW    1.871000E+03 
+        VOFF    -.0467       
+     NFACTOR     .6544       
+        CDSC   10.000000E-06 
+        PCLM    1.504        
+      PDIBL1     .2165       
+      PDIBL2  991.800000E-06 
+       DROUT     .5          
+      PSCBE1  470.000000E+06 
+          A0     .5238       
+          A1    0            
+          A2    1            
+       NPEAK  147.700000E+15 
+    SUBTHMOD    3            
+       VGLOW    -.11         
+      VGHIGH     .15         
+          XT  120.000000E-09 
+         VBM   -5            
+         LDD  200.000000E-09 
+        LITL  137.913000E-09 
+         KT1    -.411        
+         UA1    0            
+         UB1    0            
+         UC1    0            
+        PVAG     .2544       
+        KETA    -.0264       
+        ETA0     .06627      
+        ETAB    -.0212       
+         K3B     .4676       
+        DVT2    -.156        
+       CDSCB   10.000000E-09 
+     BULKMOD    1            
+        DSUB     .5          
+        RDS0    1            
+         UTE   -1.8          
+        LINT  198.200000E-09 
+        WINT  387.700000E-09 
+
+
+**** 10/02/07 19:07:16 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 1 11
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(    G)    1.1165  (   G2)    1.1165  (  out)    1.7119  (  vdd)    5.0000      
+
+(  vss)    0.0000  ( Vin1)    1.0000  
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    VSS          3.469E-18
+    VDD         -6.288E-03
+    VIN          0.000E+00
+
+    TOTAL POWER DISSIPATION   3.14E-02  WATTS
+
+
+**** 10/02/07 19:07:16 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 1 11
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+
+**** MOSFETS
+
+
+NAME         M1          Mbias     
+MODEL        modn        modn      
+ID           3.29E-03    3.00E-03 
+VGS          1.12E+00    1.12E+00 
+VDS          1.71E+00    1.12E+00 
+VBS          0.00E+00    0.00E+00 
+VTH          6.87E-01    6.87E-01 
+VDSAT        3.14E-01    3.14E-01 
+Lin0/Sat1   -1.00E+00   -1.00E+00 
+if          -1.00E+00   -1.00E+00 
+ir          -1.00E+00   -1.00E+00 
+TAU         -1.00E+00   -1.00E+00 
+GM           1.17E-02    1.10E-02 
+GDS          4.60E-04    5.21E-04 
+GMB          3.01E-03    2.84E-03 
+CBD          0.00E+00    0.00E+00 
+CBS          0.00E+00    0.00E+00 
+CGSOV        5.25E-14    5.25E-14 
+CGDOV        5.25E-14    5.25E-14 
+CGBOV        5.25E-17    5.25E-17 
+ Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
+DQGDVGB      1.96E-13    1.96E-13 
+DQGDVDB     -5.25E-14   -5.25E-14 
+DQGDVSB     -1.12E-13   -1.12E-13 
+DQDDVGB     -5.25E-14   -5.25E-14 
+DQDDVDB      5.25E-14    5.25E-14 
+DQDDVSB      0.00E+00    0.00E+00 
+DQBDVGB     -1.46E-14   -1.46E-14 
+DQBDVDB      0.00E+00    0.00E+00 
+DQBDVSB     -3.78E-14   -3.78E-14 
+
+          JOB CONCLUDED
+
+**** 10/02/07 19:07:16 ******** PSpice 9.2.3 (Jan 2002) ******* ID# 1111111111 
+ S 1 11
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .17
+

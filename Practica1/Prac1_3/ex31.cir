@@ -1,0 +1,27 @@
+* Amplificador en drenador comú
+
+.param amplada=150u, llargada=.35u, amp=50m, freq=1meg
+
+Rl    vdd    D2     1k
+Min   vdd    Gin    Sin    vss    modn    w={amplada}    l={llargada}
+Mbuff vdd    D2     vout   vss    modn    w={amplada}    l={llargada}
+M2    D2     G2     D      vss    modn    w={amplada}    l={llargada}
+M1    D      G      vss    vss    modn    w={amplada}    l={llargada}
+Vss   vss    0      0      DC     0
+Vdd   vdd    vss    5      DC     5
+Vb2   G2     vss    2.3    DC     2.3
+Vbias in1    vss    1.08   DC     1.08
+Ibias vout   vss    3m
+Iin   Sin    vss    3m
+Vin   in1    in     sin(0 {amp} {freq}) ac {amp}
+Rg    in     Gin    2k
+Cl    vout   vss    1p
+Cin   Sin    G      1n
+Rin   in1    G      10k
+
+.op
+.options reltol=1u
+.ac dec 101 1 10g
+.lib  ./cmos6tm.mod
+.probe
+.end

@@ -1,0 +1,27 @@
+S 2 17
+.lib cmos6tm.mod
+
+.param ancho=150u
+.param largo=0.35u
+
+.param amp=4
+.param amp2=2
+.param f1=1Meg
+.param f2=1.8Meg
+.param fas1=0
+.param fas2=90
+M1 vdd G out vss modn w={ancho} l={largo}
+
+
+
+ibias out vss sin(1m 0.05m {f1}) AC 0.05m
+
+VSS vss 0 0 DC 0
+VDD vdd vss  5 DC 5
+Vbias G vss  2.5 DC 2.5
+.AC dec 1000 10 1000G 
+.op
+
+.probe
+
+.end
